@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
+
+                intent.putExtra("pic", data.get(i).get("pic"));
+                intent.putExtra("content", data.get(i).get("content"));
+
                 startActivity(intent);
             }
         });
