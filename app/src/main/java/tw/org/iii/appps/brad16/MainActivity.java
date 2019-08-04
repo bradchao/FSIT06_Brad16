@@ -3,10 +3,13 @@ package tw.org.iii.appps.brad16;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -44,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
     private void initListView(){
         adapter = new SimpleAdapter(this,data,R.layout.item,from,to);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, ContentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchRemoteData(){
